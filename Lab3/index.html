@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Internal CSS</title>
+    <style type="text/css">
+        body {
+            padding-left: 25px;
+            padding top: 25px;
+        }
+        
+        article {
+            width: 600px;
+            background-color: lightgray;
+            font-family: Tahoma;
+            font-size: 16pt;
+            font-weight: bold;
+            color: navy;
+            text-transform: uppercase;
+        }
+        
+        section {
+            width: 600px;
+            background-color: lightgray;
+            font-family: Tahoma;
+            font-size: 14pt;
+            font-weight: bold;
+            color: navy;
+            text-transform: uppercase;
+        }
+        
+        dt {
+            font-family: Tahoma;
+            font-size: 11pt;
+            font-weight: bold;
+        }
+        
+        dd {
+            font-family: Tahoma;
+            font-size: 10pt;
+            color: gray;
+            width: 550px;
+            text-align: justify;
+        }
+        
+        #Lat {
+            width: 600px;
+            font-family: Tahoma;
+            font-size: 10pt;
+            text-align: right;
+        }
+        
+        .snow {
+            color: black;
+            font-size: 14pt;
+        }
+        
+        #map-canvas {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+        var map;
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 8,
+                center: new google.maps.LatLng(39.06, 160.41)
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+
+<body>
+    <article>Current Data</article>
+
+    <p>Current data as of
+        <time>12:12:12</time>
+    </p>
+
+    <section>Current Conditions</section>
+    <dl>
+        <dt>Tonight</dt>
+        <dd>A 30 percent chance of <span class="snow">snow</span>. Mostly cloudy, with a low around 27. Southwest wind 5 to 10 mph becoming east after midnight. Total nighttime <span class="snow">snow</span> accumulation of around an inch possible.</dd>
+        <dt>Friday</dt>
+        <dd><span class="snow">Snow</span>. High near 37. South southeast wind 6 to 8 mph. Chance of precipitation is 100%. New <span class="snow">snow</span> accumulation of 13 to 17 inches possible.</dd>
+    </dl>
+
+    <section>Current Location</section>
+
+    <p id="Lat">Lat/Lon: 39.33&deg;N 120.37&deg;W Elevation: 6963 ft</p>
+
+    <section>Map</section>
+    <p></p>
+    <div id="map-canvas"></div>
+</body>
+
+</html>

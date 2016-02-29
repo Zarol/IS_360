@@ -1,0 +1,30 @@
+h1 {
+    position: relative;
+    background-color: #CCFFCC;
+    margin-left: 10px;
+}
+
+h2 {
+    position: relative;
+    background-color: #CCFF99;
+    margin-left: 15px;
+}
+
+h3 {
+    position: relative;
+    background-color: #CCFF66;
+    margin-left: 20px;
+}
+
+.wrapper {
+    width: 800px;
+}
+
+.level2Wrapper {
+    position: relative;
+    border-width: medium;
+    border-style: solid;
+    border-color: black;
+    width: 700px;
+    margin-left: 15px;
+}

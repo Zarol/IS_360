@@ -1,0 +1,37 @@
+body {
+    font: 76% arial, sans-serif;
+}
+
+h1 {
+    height: 80px;
+    line-height: 80px;
+}
+
+h2 {
+    margin-top: 10px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.wrapper {
+    width: 610px;
+}
+
+.header {
+    background-color: #F3F2ED;
+}
+
+.side-a {
+    float: left;
+    width: 160px;
+    background-color: #F6F0E0;
+}
+
+.side-b {
+    float: left;
+    width: 420px;
+}
+
+.footer {
+    background-color: #F3F2ED;
+}

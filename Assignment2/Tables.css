@@ -1,0 +1,39 @@
+table {
+    width: 700px;
+    border-width: 3px;
+    text-align: right;
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: lightblue;
+}
+
+tbody {
+    color: darkblue;
+}
+
+th {
+    width: 100px;
+    font-weight: bold;
+}
+
+td {
+    padding-right: 3px;
+}
+
+th,
+td {
+    border-width: 1px;
+    border-style: solid;
+}
+
+td:first-child,
+th:first-child {
+    text-align: left;
+}
+
+.negative {
+    color: maroon;
+}

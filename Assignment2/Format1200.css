@@ -1,0 +1,19 @@
+.section2 {
+    background-color: lightblue;
+}
+
+.section2 p {
+    font-family: Franklin Gothic Medium, Arial Narrow, Arial, sans-serif;
+    font-size: 1.2em
+}
+
+.section3 {
+    background-color: lightgreen;
+}
+
+.section3 p {
+    font-family: Franklin Gothic Medium, Arial Narrow, Arial, sans-serif;
+    font-size: 1.2em;
+    text-align: justify;
+    text-indent: .5in;
+}

@@ -1,0 +1,34 @@
+body {
+    height: 11in;
+    width: 8.5in;
+    margin: 1in .625in 1in .75in;
+    padding: 8px;
+    font-size: 100%;
+}
+
+p {
+    font-family: Franklin Gothic Medium, Arial Narrow, Arial, sans-serif;
+    font-size: 1.2em;
+    text-align: justify;
+    text-indent: .5in;
+}
+
+h1 {
+    color: darkblue;
+    font-size: 2em;
+}
+
+h2 {
+    color: darkgreen;
+    font-size: 1.6em;
+}
+
+p.pIndent {
+    margin: 0in .25in;
+    text-indent: 0in;
+    font-style: italic;
+}
+
+p code {
+    color: darkcyan;
+}

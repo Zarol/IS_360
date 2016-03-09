@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>CSS Lab 5</title>
+    <script>
+        function btnWhileLoop_Click() {
+            var counter = 10;
+            ph = document.getElementById("divPlaceHolder");
+            ph.innerHTML = "Pretest loop: ";
+
+            while (counter >= 1) {
+                ph.innerHTML += counter.toString() + " ";
+                counter--;
+            }
+        }
+
+        function btnDoWhileLoop_Click() {
+            var counter = 10;
+            ph = document.getElementById("divPlaceHolder");
+            ph.innerHTML = "Posttest loop: ";
+
+            do {
+                ph.innerHTML += counter.toString() + " ";
+                counter--;
+            } while (counter >= 1);
+        }
+
+        function btnForLoop_Click() {
+            var counter = 10;
+            ph = document.getElementById("divPlaceHolder");
+            ph.innerHTML = "For loop: ";
+
+            for (counter = 10; counter >= 1; counter--) {
+                ph.innerHTML += counter.toString() + " ";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button type="button" id="btnWhileLoop" onclick="btnWhileLoop_Click()">btnWhileLoop</button>
+    <button type="button" id="btnDoWhileLoop" onclick="btnDoWhileLoop_Click()">btnDoWhileLoop</button>
+    <button type="button" id="btnForLoop" onclick="btnForLoop_Click()">btnForLoop</button>
+    <div id="divPlaceHolder"></div>
+</body>
+
+</html>

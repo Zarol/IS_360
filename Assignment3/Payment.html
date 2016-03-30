@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Payment</title>
+    <link rel="stylesheet" type="text/css" href="Assignment3.css" />
+
+    <script>
+        function calculate_Click() {
+            // Input
+            var initialLoanAmount = parseFloat((document.getElementById("inInitialLoanAmount")).value);
+            var numberOfPeriods = parseFloat((document.getElementById("inNumberOfPeriods")).value) * 12;
+            var interestRate = parseFloat((document.getElementById("inInterestRate")).value) / 100 / 12;
+
+            // Output
+            var result = (interestRate * initialLoanAmount) / (1 - Math.pow(1 + interestRate, -1 * numberOfPeriods));
+            (document.getElementById("outLoanPayment")).innerHTML = "$" + round(result, 2);
+        }
+
+        function round(number, percision) {
+            if (!percision)
+                percision = 2;
+
+            var d = Math.pow(10, percision);
+            return (parseInt(number * d) / d).toFixed(percision);
+        };
+    </script>
+</head>
+
+<body>
+    <a href="index.html">Index</a> | <a href="Afford.html">Afford</a> | <a href="CompoundInterest.html">Compound Interest</a>
+    <hr/>
+    <form>
+        <fieldset>
+            <legend>Loan Payments</legend>
+            <table>
+                <tr>
+                    <td>Initial Loan Amount:</td>
+                    <td>
+                        <input type="number" id="inInitialLoanAmount" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Number of Periods (Years):</td>
+                    <td>
+                        <input type="number" id="inNumberOfPeriods" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Interest Rate (Years):</td>
+                    <td>
+                        <input type="number" id="inInterestRate" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br/>
+        <input id="calculate" type="button" value="Calculate Loan Payments" onclick="calculate_Click()" />
+    </form>
+    <br/>
+    <fieldset>
+        <legend>Results</legend>
+        <table>
+            <tr>
+                <td>Loan Payment:</td>
+                <td>
+                    <output id="outLoanPayment" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</body>
+
+</html>

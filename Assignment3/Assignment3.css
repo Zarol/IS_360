@@ -1,0 +1,14 @@
+table input {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+table output {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: DarkBlue;
+}
+
+td:first-child {
+    font-family: Arial, sans-serif;
+    text-align: right;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Afford</title>
+    <link rel="stylesheet" type="text/css" href="Assignment3.css" />
+
+    <script>
+        function calculate_Click() {
+            // Income
+            var monthlyIncome = parseFloat((document.getElementById("inMonthlyIncome")).value);
+            var alimonyIncome = parseFloat((document.getElementById("inAlimonyIncome")).value);
+            var interestDividendIncome = parseFloat((document.getElementById("inInterestDividendIncome")).value);
+
+            var totalIncome = monthlyIncome + alimonyIncome + interestDividendIncome;
+            (document.getElementById("outTotalIncome")).innerHTML = "$" + totalIncome;
+
+            // Expenses
+            var creditCardPayments = parseFloat((document.getElementById("inCreditCardPayments")).value);
+            var carPayments = parseFloat((document.getElementById("inCarPayments")).value);
+            var recurringPayments = parseFloat((document.getElementById("inRecurringPayments")).value);
+
+            var totalExpenses = creditCardPayments + carPayments + recurringPayments;
+            (document.getElementById("outTotalExpenses")).innerHTML = "$" + totalExpenses;
+
+            // Payments
+            var percent29 = totalIncome * 0.29;
+            var percent39 = (totalIncome - totalExpenses) * 0.39;
+
+            var maxAffordablePayment = document.getElementById("outMaxAffordablePayment");
+            var percentageUsed = document.getElementById("outPercentageUsed");
+
+            if (percent29 < percent39) {
+                maxAffordablePayment.innerHTML = "$" + round(percent29, 2);
+                percentageUsed.innerHTML = "29%";
+            } else {
+                maxAffordablePayment.innerHTML = "$" + round(percent39, 2);
+                percentageUsed.innerHTML = "39%";
+            }
+        }
+
+        function round(number, percision) {
+            if (!percision)
+                percision = 2;
+
+            var d = Math.pow(10, percision);
+            return (parseInt(number * d) / d).toFixed(percision);
+        };
+    </script>
+</head>
+
+<body>
+    <a href="index.html">Index</a> | <a href="CompoundInterest.html">Compound Interest</a> | <a href="Payment.html">Payment</a>
+    <hr/>
+
+    <form>
+        <fieldset>
+            <legend>Income</legend>
+            <table>
+                <tr>
+                    <td>Monthly Income:</td>
+                    <td>
+                        <input type="number" id="inMonthlyIncome" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Alimony Income:</td>
+                    <td>
+                        <input type="number" id="inAlimonyIncome" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Interest / Dividend Income:</td>
+                    <td>
+                        <input type="number" id="inInterestDividendIncome" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br/>
+        <fieldset>
+            <legend>Expenses</legend>
+            <table>
+                <tr>
+                    <td>Credit Card Payments:</td>
+                    <td>
+                        <input type="number" id="inCreditCardPayments" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Car Payments:</td>
+                    <td>
+                        <input type="number" id="inCarPayments" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Other Recurring Payments:</td>
+                    <td>
+                        <input type="number" id="inRecurringPayments" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br/>
+        <input id="calculate" type="button" value="Calculate Payment" onclick="calculate_Click()" />
+    </form>
+    <br/>
+    <fieldset>
+        <legend>Results</legend>
+        <table>
+            <tr>
+                <td>Maximum Affordable Payment:</td>
+                <td>
+                    <output id="outMaxAffordablePayment" />
+                </td>
+            </tr>
+            <tr>
+                <td>Percentage Used:</td>
+                <td>
+                    <output id="outPercentageUsed" />
+                </td>
+            </tr>
+            <tr>
+                <td>Total Income:</td>
+                <td>
+                    <output id="outTotalIncome" />
+                </td>
+            </tr>
+            <tr>
+                <td>Total Expenses:</td>
+                <td>
+                    <output id="outTotalExpenses" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</body>
+
+</html>

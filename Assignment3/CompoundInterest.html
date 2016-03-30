@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Compound Interest</title>
+    <link rel="stylesheet" type="text/css" href="Assignment3.css" />
+
+    <script>
+        function calculate_Click() {
+            // Input
+            var initialInvestmentAmount = parseFloat((document.getElementById("inInitialInvestmentAmount")).value);
+            var numberOfPeriods = parseFloat((document.getElementById("inNumberOfPeriods")).value);
+            var interestRatePerPeriod = parseFloat((document.getElementById("inInterestRatePerPeriod")).value) / 100;
+
+            // Output
+            var result = initialInvestmentAmount * Math.pow(1 + interestRatePerPeriod, numberOfPeriods);
+            (document.getElementById("outCompoundInterest")).innerHTML = round(result, 2) + "%";
+        }
+
+        function round(number, percision) {
+            if (!percision)
+                percision = 2;
+
+            var d = Math.pow(10, percision);
+            return (parseInt(number * d) / d).toFixed(percision);
+        };
+    </script>
+</head>
+
+<body>
+    <a href="index.html">Index</a> | <a href="Afford.html">Afford</a> | <a href="Payment.html">Payment</a>
+    <hr/>
+    <form>
+        <fieldset>
+            <legend>Compound Interest</legend>
+            <table>
+                <tr>
+                    <td>Initial Investment Amount:</td>
+                    <td>
+                        <input type="number" id="inInitialInvestmentAmount" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Number of Periods:</td>
+                    <td>
+                        <input type="number" id="inNumberOfPeriods" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Interest Rate Per Period:</td>
+                    <td>
+                        <input type="number" id="inInterestRatePerPeriod" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br/>
+        <input id="calculate" type="button" value="Calculate Compound Interest" onclick="calculate_Click()" />
+    </form>
+    <br/>
+    <fieldset>
+        <legend>Results</legend>
+        <table>
+            <tr>
+                <td>Compound Interest:</td>
+                <td>
+                    <output id="outCompoundInterest" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</body>
+
+</html>

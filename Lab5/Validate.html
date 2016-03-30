@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>CSS Lab 5</title>
+    <script>
+        function btnValidate_Click() {
+            var txtFirstName, txtLastName;
+            var tErr;
+            txtFirstName = document.getElementById("txtFirstName");
+            txtLastName = document.getElementById("txtLastName");
+            tErr = document.getElementById("spnMessages");
+            if (txtFirstName.value == "" || txtLastName.value == "") {
+                tErr.innerHTML = "Name must exist.";
+            } else {
+                tErr.innerHTML = "Name valid.";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form id="firstForm">
+        <fieldset form="firstForm">
+            <legend>Validate Input</legend>
+            Enter First Name:
+            <input type="text" id="txtFirstName" />
+            <br/> Enter Last Name:
+            <input type="text" id="txtLastName" />
+            <br/>
+            <button id="btnValidate" type="button" onclick="btnValidate_Click()">Validate</button>
+            <br/> Messages: <span id="spnMessages"></span>
+        </fieldset>
+    </form>
+</body>
+
+</html>

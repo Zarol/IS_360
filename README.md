@@ -13,3 +13,6 @@ CSS Lab 1
 
 ## Lab 4
 CSS Lab 2
+
+## Lab 5
+JavaScript Lab 1

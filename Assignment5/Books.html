@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Books</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+        function DoWorkGetBook() {
+            // The base URL for yql.
+            var yql_base_uri = "http://query.yahooapis.com/v1/public/yql?q=";
+            var qVal = document.getElementById('txtQuery').value;
+            var maxResVal = document.getElementById('txtMaxResults').value;
+
+            yql_query = "SELECT * from google.books where q=\"" + qVal + "\" AND maxResults=" + maxResVal + "&env=store://datatables.org/alltableswithkeys";
+
+            // Create the new XMLHttpRequest object over which the the AJAX request will be sent.
+            var req = new XMLHttpRequest();
+
+            req.onreadystatechange = function () {
+
+                //
+                var MyText = req.responseText;
+                var docXML = req.responseXML;
+
+                var nodeList = docXML.getElementsByTagName("items");
+                var tbl = document.getElementById("outputTbl");
+                for (var i = 0; i < nodeList.length; i++) {
+
+                    var tr = document.createElement('tr');
+
+                    var td = document.createElement('td');
+                    var title = nodeList[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
+                    td.appendChild(document.createTextNode(title));
+                    tr.appendChild(td);
+
+                    var subtitle;
+                    if (nodeList[i].getElementsByTagName('subtitle')[0] != undefined) {
+                        subtitle = nodeList[i].getElementsByTagName('subtitle')[0].childNodes[0].nodeValue;
+
+                    } else {
+                        subtitle = "";
+                    }
+                    td = document.createElement('td');
+                    td.appendChild(document.createTextNode(subtitle));
+                    tr.appendChild(td);
+
+                    var desc;
+                    if (nodeList[i].getElementsByTagName('description')[0] != undefined) {
+                        desc = nodeList[i].getElementsByTagName('description')[0].childNodes[0].nodeValue;
+                    } else {
+                        desc = "";
+                    }
+                    td = document.createElement('td');
+                    td.appendChild(document.createTextNode(desc));
+                    tr.appendChild(td);
+
+                    // Add row to table
+                    tbl.appendChild(tr);
+                }
+
+            }
+
+            // Now open the query and send it. This causes the reqeust to execute. When the data
+            // is returned, the onreadystatechange event will fire.
+            req.open("GET", yql_base_uri + yql_query, true);
+            req.send();
+
+        }
+    </script>
+</head>
+
+<body>
+    <a href="index.html">Index</a> | <a href="Employment.html">Employment</a> | <a href="Accordion.html">Accordion</a> | <a href="StockQuote.html">Stock Quote</a>
+    <hr/>
+
+    <label>Query:</label>
+    <input type="text" id="txtQuery" />
+    <br/>
+    <label>Max Results:</label>
+    <input type="text" id="txtMaxResults" />
+    <br/>
+    <button id="btnGObtainKnowledge" type="button" value="Obtain Knowledge" onclick="DoWorkGetBook()">
+        Obtain Knowledge
+    </button>
+    <br />
+    <br />
+
+    <table id="outputTbl" style="padding: 0px 40px">
+        <h3 id="txtTitle">Book Results</h3>
+        <tr>
+            <th style="width: 15%">Title</th>
+            <th style="width: 15%">Subtitle</th>
+            <th style="width: 70%">Description</th>
+        </tr>
+    </table>
+</body>
+
+</html>

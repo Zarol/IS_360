@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stock Quote</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // In the following, we show two versions fo the same AJAX stock quote request
+        // frm YQL.
+        //
+        // The first makes the request asynchronously.
+        //
+        // The second makes the request synchronously.
+        function DoWorkGetQuoteAjaxAsynchronous() {
+            var symbol = $("#stockSymbol").val();
+
+            // The base URL for yql.
+            var yql_base_uri = "http://query.yahooapis.com/v1/public/yql?q=";
+
+            // Create a YQL query to get a stock quote for general electric. Note that the following
+            // statement fragment can be used for all YQL queries so that you do not need an
+            // account or key.
+            yql_query = "SELECT * from yahoo.finance.quotes where symbol in ('" + symbol + "') &env=store://datatables.org/alltableswithkeys"
+
+            // Create the new XMLHttpRequest object over which the the AJAX request will be sent.
+            var req = new XMLHttpRequest();
+
+            // Wire the onreadystatechange event using an anonymous function
+            // When the state of the reqeust completes, process the return
+            // value.
+            req.onreadystatechange = function () {
+
+                //
+                var MyText = req.responseText;
+                var docXML = req.responseXML;
+
+                var stockLabel = document.getElementById("txtTitle");
+                stockLabel.innerHTML = "Stock Quote for " + symbol;
+
+                // The following works just like the DOM code with which you have been working.
+                // getElementsByTagName applies to the variable docXML, which is an in-memory
+                // representation of an XML document. The method call returns a list of nodes,
+                // even though there is only one node in the list.
+                var nodeList;
+                nodeList = docXML.getElementsByTagName("LastTradePriceOnly");
+
+                // The following gets the 0th element from nodeList. This is the only node in the list.
+                // The fragment childNodes[0] gets the first child, which is the node's text. Remember
+                // that a node's text is represented as a child of the element node itself.
+                var result = nodeList[0].childNodes[0].nodeValue;
+
+                // Display the result in the output text box.
+                lblQuote = document.getElementById("txtQuote");
+                lblQuote.innerHTML = result.toString();
+
+                // Display the textual output in the text box named txtXMLAsText.
+                txtOutput = document.getElementById("txtXMLAsText");
+                txtOutput.innerHTML = MyText;
+
+                nodeList = doc.getElementsByTagName("Open");
+                result = nodeList[0].childNodes[0].nodeValue;
+                var lblOpen = document.getElementById("txtOpen");
+                lblOpen.innerHTML = result.toString();
+
+                nodeList = doc.getElementsByTagName("PreviousClose");
+                result = nodeList[0].childNodes[0].nodeValue;
+                var lblPC = document.getElementById("txtPreviousClose");
+                lblPC.innerHTML = result.toString();
+
+                nodeList = doc.getElementsByTagName("DaysLow");
+                result = nodeList[0].childNodes[0].nodeValue;
+                var lblDL = document.getElementById("txtDaysLow");
+                lblDL.innerHTML = result.toString();
+
+                nodeList = doc.getElementsByTagName("DaysHigh");
+                result = nodeList[0].childNodes[0].nodeValue;
+                var lblDH = document.getElementById("txtDaysHigh");
+                lblDH.innerHTML = result.toString();
+
+                nodeList = doc.getElementsByTagName("YearLow");
+                result = nodeList[0].childNodes[0].nodeValue;
+                var lblYL = document.getElementById("txtYearLow");
+                lblYL.innerHTML = result.toString();
+
+                nodeList = doc.getElementsByTagName("YearHigh");
+                result = nodeList[0].childNodes[0].nodeValue;
+                var lblYH = document.getElementById("txtYearHigh");
+                lblYH.innerHTML = result.toString();
+            }
+
+            // Now open the query and send it. This causes the reqeust to execute. When the data
+            // is returned, the onreadystatechange event will fire.
+            req.open("GET", yql_base_uri + yql_query, true);
+            req.send();
+        }
+
+        function DoWorkGetQuoteAjaxSynchronous() {
+            var symbol = $("#stockSymbol").val();
+
+            // The base URL for yql.
+            var yql_base_uri = "http://query.yahooapis.com/v1/public/yql?q=";
+
+            //
+            // Create a YQL query to get a stock quote.
+            // the query returns a structured XML document
+            //
+            yql_query = "SELECT * from yahoo.finance.quotes where symbol in ('" + symbol + "') &env=store://datatables.org/alltableswithkeys"
+
+            //y ql_query = "SELECT * from geo.places WHERE text='SFO'";
+            // We are going to use the GET method so the querystring is passed in the URL.
+            // This is what YQL expected. Open and send the request (synchronous)
+
+            var req = new XMLHttpRequest();
+            req.open("GET", yql_base_uri + yql_query, false);
+            req.send();
+
+            // We get here when the synchronous call finishes. req.send() will block until
+            // the request completes.
+            var MyText = req.responseText;
+            var doc = req.responseXML;
+
+            var stockLabel = document.getElementById("txtTitle");
+            stockLabel.innerHTML = "Stock Quote for " + symbol;
+
+            txtOutput = document.getElementById("txtXMLAsText");
+            txtOutput.innerHTML = MyText;
+
+            var nodeList;
+            nodeList = doc.getElementsByTagName("LastTradePriceOnly");
+
+            var result = nodeList[0].childNodes[0].nodeValue;
+            lblQuote = document.getElementById("txtQuote");
+
+            lblQuote.innerHTML = result.toString();
+
+            nodeList = doc.getElementsByTagName("Open");
+            result = nodeList[0].childNodes[0].nodeValue;
+            var lblOpen = document.getElementById("txtOpen");
+            lblOpen.innerHTML = result.toString();
+
+            nodeList = doc.getElementsByTagName("PreviousClose");
+            result = nodeList[0].childNodes[0].nodeValue;
+            var lblPC = document.getElementById("txtPreviousClose");
+            lblPC.innerHTML = result.toString();
+
+            nodeList = doc.getElementsByTagName("DaysLow");
+            result = nodeList[0].childNodes[0].nodeValue;
+            var lblDL = document.getElementById("txtDaysLow");
+            lblDL.innerHTML = result.toString();
+
+            nodeList = doc.getElementsByTagName("DaysHigh");
+            result = nodeList[0].childNodes[0].nodeValue;
+            var lblDH = document.getElementById("txtDaysHigh");
+            lblDH.innerHTML = result.toString();
+
+            nodeList = doc.getElementsByTagName("YearLow");
+            result = nodeList[0].childNodes[0].nodeValue;
+            var lblYL = document.getElementById("txtYearLow");
+            lblYL.innerHTML = result.toString();
+
+            nodeList = doc.getElementsByTagName("YearHigh");
+            result = nodeList[0].childNodes[0].nodeValue;
+            var lblYH = document.getElementById("txtYearHigh");
+            lblYH.innerHTML = result.toString();
+        }
+    </script>
+</head>
+
+<body>
+    <a href="index.html">Index</a> | <a href="Employment.html">Employment</a> | <a href="Accordion.html">Accordion</a> | <a href="Books.html">Books</a>
+    <hr/>
+
+    <form action="IS360AjaxExample1.htm" method="get">
+        <select id="stockSymbol">
+            <option value="BRK-A">Berkshire Hathaway</option>
+            <option value="SEB">Seaboard Corporation</option>
+            <option value="NVR">NVR Inc.</option>
+            <option value="PCLN">Priceline</option>
+            <option value="GOOGL">Alphabet Inc.</option>
+        </select>
+        <button id="btnGetQuoteAjaxSynchronous" type="button" value="Get Quote" onclick="DoWorkGetQuoteAjaxSynchronous()">
+            Get Quote Sync
+        </button>
+        <button id="btnGetQuoteAjaxAsynchronous" type="button" value="Get Quote" onclick="DoWorkGetQuoteAjaxAsynchronous()">
+            Get Quote Async
+        </button>
+
+        <br />
+        <br />
+        <textarea style="width:600px" id="txtXMLAsText" rows="40" cols="200"></textarea>
+    </form>
+
+    <table>
+        <h1 id="txtTitle">Stock Quote</h1>
+        <tr>
+            <td>Quote:</td>
+            <td id="txtQuote"></td>
+        </tr>
+        <tr>
+            <td>Open:</td>
+            <td id="txtOpen"></td>
+        </tr>
+        <tr>
+            <td>Previous Close:</td>
+            <td id="txtPreviousClose"></td>
+        </tr>
+        <tr>
+            <td>Days Low:</td>
+            <td id="txtDaysLow"></td>
+        </tr>
+        <tr>
+            <td>Days High:</td>
+            <td id="txtDaysHigh"></td>
+        </tr>
+        <tr>
+            <td>Year Low:</td>
+            <td id="txtYearLow"></td>
+        </tr>
+        <tr>
+            <td>Year High:</td>
+            <td id="txtYearHigh"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

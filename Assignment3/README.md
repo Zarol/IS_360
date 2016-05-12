@@ -24,7 +24,8 @@ On this page, you will write a JavaScript program that will estimate the maximum
 ### Income
 + Monthly Income
 + Alimony Income
-+ Interest / Dividend income
++ Interest / Dividend income 
+
 ### Expenses
 + Credit Card payments
 + Car payments
@@ -59,7 +60,8 @@ So that you can check your work, the payment on a $100,000 loan for 10 years at 
 ### Inputs
 + Initial Loan Amount
 + Number of Periods (Years)
-+ Interest Rate (Years)
++ Interest Rate (Years) 
+
 ### Output
 + Payment amount
 Note, when calculating the payment, the user enters the input values in years. However, the payment should be calculated using values expressed in months. Thus, you must multiply the number of periods by 12 to express the value in months. You need to divide the interest rate by 12 to express the annual interest rate as a monthly interest rate.

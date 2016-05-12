@@ -40,19 +40,19 @@ How you create the table is completely up to you. You can create the <table> tag
 ## Pseudocode
 Consider the applying the following pseudocode as you create the JavaScript.
 
-Get the loan amount and store the value in a variable.
-Get the annual interest rate and store the value in a variable.
-Divide the annual interest rate by 12 to get the monthly interest rate storing the result in a variable.
-Multiply the annual loan term by 12 to get the monthly loan term, again storing the value in a variable.
-Using the above values, calculate the payment. See my example to make sure that the payment amount is correct.
-The following should be performed in a for loop:
-Create a loop that will enumerate once for each period (360 periods for 30 years). The following should be performed in the loop:
-   Create a new table row.
-   Create a new table cell (column 1). Store the beginning balance in the table cell.
-   Create a new table cell (column 2). Store the payment in the table cell. This value will be the same for all rows.
-   Create a new table cell (column 3). Calculate the current interest by multiplying the beginning balance by the monthly interest rate. Store the value in the table cell.
-   Create a new table cell (column 4). Calculate the current principal by subtracting the current interest from the payment amount. Store the value in the cell.
-   Create a new table cell (column 5). Calculate the new balance by subtracting the current principal amount from the beginning balance. Store the value in the cell. This new balance becomes the beginning balance for the next period.
-   Create a new table cell (column 6). Display the period. This number should be the same as the loop's counter.
-   Add all of the cells to the table row.
-   Add the table row to the table.
+Get the loan amount and store the value in a variable.  
+Get the annual interest rate and store the value in a variable.  
+Divide the annual interest rate by 12 to get the monthly interest rate storing the result in a variable.  
+Multiply the annual loan term by 12 to get the monthly loan term, again storing the value in a variable.  
+Using the above values, calculate the payment. See my example to make sure that the payment amount is correct.  
+The following should be performed in a for loop:  
+Create a loop that will enumerate once for each period (360 periods for 30 years). The following should be performed in the loop:  
+   Create a new table row.  
+   Create a new table cell (column 1). Store the beginning balance in the table cell.  
+   Create a new table cell (column 2). Store the payment in the table cell. This value will be the same for all rows.  
+   Create a new table cell (column 3). Calculate the current interest by multiplying the beginning balance by the monthly interest rate. Store the value in the table cell.  
+   Create a new table cell (column 4). Calculate the current principal by subtracting the current interest from the payment amount. Store the value in the cell.  
+   Create a new table cell (column 5). Calculate the new balance by subtracting the current principal amount from the beginning balance. Store the value in the cell. This new balance becomes the beginning balance for the next period.  
+   Create a new table cell (column 6). Display the period. This number should be the same as the loop's counter.  
+   Add all of the cells to the table row.  
+   Add the table row to the table.  

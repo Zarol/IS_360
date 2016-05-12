@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Assignment 4</title>
+    <link rel="stylesheet" type="text/css" href="http://swww.coba.unr.edu/skleips/Assignment3/Assignment3.css" />
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Loan Scheduler</legend>
+        <table>
+            <tr>
+                <td>Initial Loan Amount:</td>
+                <td>
+                    <input type="number" id="txtInitialLoanAmount" />
+                </td>
+            </tr>
+            <tr>
+                <td>Number of Periods (Years):</td>
+                <td>
+                    <input type="number" id="txtNumberOfPeriods" />
+                </td>
+            </tr>
+            <tr>
+                <td>Interest Rate (Years):</td>
+                <td>
+                    <input type="number" id="txtInterestRate" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br/>
+    <input type="button" id="btnCalculate" value="Calculate Loan Payment" onclick="calculate_click()" />
+    <br/>
+    <fieldset>
+        <legend>Results</legend>
+        <table id="tblOutput">
+            <tr>
+                <th>Beginning Balance</th>
+                <th>Payment</th>
+                <th>Interest</th>
+                <th>Principal</th>
+                <th>Balance</th>
+                <th>Period</th>
+            </tr>
+        </table>
+    </fieldset>
+</body>
+
+</html>
